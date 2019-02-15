@@ -1,0 +1,11 @@
+email,connection_id,role,start,end
+some-user+glke6vwbrmqsshmmers5@fake-test-domain.com,YhtOJ8bXRGCEkZVRmgQ6,inhabitant,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+3yopxepektedbq4jbfcm@fake-test-domain.com,YhtOJ8bXRGCEkZVRmgQ6,owner,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+efb0lnb6dbz7obuhwmgy@fake-test-domain.com,VTkhauz8DSdFTpTjjvzL,gaurantee_provider,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+dtfkktewqs2ubhugraa1@fake-test-domain.com,YhtOJ8bXRGCEkZVRmgQ6,maintenance_provider,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+5cihkmzywygywgdrtwwj@fake-test-domain.com,VTkhauz8DSdFTpTjjvzL,inhabitant,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+efb0lnb6dbz7obuhwmgy@fake-test-domain.com,YhtOJ8bXRGCEkZVRmgQ6,direct_service_provider,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+3yopxepektedbq4jbfcm@fake-test-domain.com,rHVLk6Zoikbqcl4J4zvu,owner,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+efb0lnb6dbz7obuhwmgy@fake-test-domain.com,rHVLk6Zoikbqcl4J4zvu,direct_service_provider,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+5cihkmzywygywgdrtwwj@fake-test-domain.com,rHVLk6Zoikbqcl4J4zvu,inhabitant,2019-02-13 00:00:00,2020-02-13 00:00:00
+some-user+3yopxepektedbq4jbfcm@fake-test-domain.com,VTkhauz8DSdFTpTjjvzL,owner,2019-02-13 00:00:00,2020-02-13 00:00:00

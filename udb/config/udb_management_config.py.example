@@ -1,0 +1,7 @@
+#this is the management token you can generate from the management_token.py script
+AUTH0_MANAGEMENT_TOKEN = ""
+#this is the domain related to your Auth0 account
+AUTH0_MANAGEMENT_DOMAIN = 'domain.eu.auth0.com'
+#these are the credentials for the managment app you create in the dashboard
+AUTH0_MANAGEMENT_CLIENT_ID = 'ph59qh8gBpMopys5Pz75BzVNY5dslS2s'
+AUTH0_MANAGEMENT_CLIENT_SECRET = 'LYk2Y3LMfqf61qIrl4ZYQanco4PUP3czRsjFmb9IXfCy-fvPONAs1t85hJBrPaRX'

@@ -1,0 +1,16 @@
+#get this from Auth0
+JWT_PUBLIC_KEY_SET = {"keys":[{"alg":"RS256","kty":"RSA","use":"sig","x5c":["","x5t":""}]}
+#set this in your Auth0 API
+JWT_ALGORITHM = "RS256"
+#this is your Auth0 domain
+AUTH0_DOMAIN = 'domain.eu.auth0.com'
+ISSUER = "https://"+AUTH0_DOMAIN+"/"
+#API audience defined in the Auth0 dashboard
+API_AUDIENCE = "https://stroomversnelling.nl/user/test"
+
+#This is for the client app that deals with the authorization code flow and generates tokens
+CLIENT_APP_ID = "I8m2L4udhXM7jA45VZAanxlmd0IBh6jK"
+CLIENT_APP_SECRET = "rK2xQoSNbbw156kSNni-Kd35AqwrTVm5UzJb35M8oiNcWLp1JLVCHouutqSMjFew" 
+
+REDIRECT_URI = "http://localhost:3000/callback"
+AUTH0_NAMESPACE = 'https://stroomversnelling.nl/'

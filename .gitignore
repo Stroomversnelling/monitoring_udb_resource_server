@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.sqlite3
+config.bat
+*config.py
+runstub.bat
+.vscode/settings.json
+authorization_grant_token_old.py
+.vscode/launch.json

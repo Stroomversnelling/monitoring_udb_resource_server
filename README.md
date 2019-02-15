@@ -79,7 +79,7 @@ module.exports = function(client, scope, audience, context, cb) {
 2. Review and modify the config files in the config folder. Remove the ".example" extension
 
 To get your public key go to:
-https://washnote.eu.auth0.com/.well-known/jwks.json
+https://[your-domain].auth0.com/.well-known/jwks.json
 
 3. Review and remove the ".example" extension from the sqlite database
 

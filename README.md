@@ -15,7 +15,7 @@ Add custom logout paths: https://localhost:3000/
 In the Auth0 dashboard (https://manage.auth0.com/): Add a custom rules and hooks to enable the creation of the PDB tokens dynamically with custom claims in the JWT format bearer token.
 
 Add the following rule for the client to work:
-
+~~~~
 function (user, context, callback) {
   const namespace = 'https://stroomversnelling.nl/';
   
@@ -34,9 +34,9 @@ function (user, context, callback) {
   }
   callback(null, user, context);
 }
-
+~~~~
 The management app will work with the Auth0 Management API. However, if you want the M2M flow to work for the UDB API (you have to implement this or use curl), then you will need to add a hook that does the same as the rule (this is untested):
-
+~~~~
 /**
 @param {object} client - information about the client
 @param {string} client.name - name of client
@@ -75,7 +75,7 @@ module.exports = function(client, scope, audience, context, cb) {
 
   cb(null, access_token);
 };
-
+~~~~
 2. Review and modify the config files in the config folder. Remove the ".example" extension
 
 To get your public key go to:

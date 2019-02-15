@@ -35,6 +35,38 @@ function (user, context, callback) {
   callback(null, user, context);
 }
 ~~~~
+2. Review and modify the config files in the config folder. Remove the ".example" extension
+
+To get your public key go to:
+https://[your-domain].auth0.com/.well-known/jwks.json
+
+3. Review and remove the ".example" extension from the sqlite database
+
+4. Create csv files such as in the csv folder with the appropriate users, connection IDs (random 20 char alphanumeric), and contracts. Review the example sqlite database if in doubt about how the data is structured and constrained. Some constraints, for example on data format are only enforced through the python management app on import.
+
+5. Generate a permanent token for your management app
+
+python management_token.py
+
+Paste the result into the variable AUTH0_MANAGEMENT_TOKEN in config/udp_management_config.py
+
+# How to use it
+## Start up the API 
+This will default to http://localhost:8080/energiesprong/user/0.0.3/ui/
+
+python app.py
+
+## Run the management script
+This one will let up load csv files, create users, etc. Look at the code for options.
+
+python management_app.py
+
+## Run the client app for login and to get PDB tokens
+This client allows you to either login and create a token for the UDB to see all PDBs (what a client would do for the user) and related data. The PDB field on the home page however allows you to specify the token is for one specific PDB and will limit results to only PDBs that have the exact URL filled in. So if you PDB url in the database is "https://www.stroomversnelling/pdb-example" then you must use this value exactly to generate a valid token. The token works by adding a custom scope using the rule above, which will limit the data provided via the API.
+
+python authorization_client.py
+
+# For advanced cases (use at own risk - untested)
 The management app will work with the Auth0 Management API. However, if you want the M2M flow to work for the UDB API (you have to implement this or use curl), then you will need to add a hook that does the same as the rule (this is untested):
 ~~~~
 /**
@@ -76,33 +108,3 @@ module.exports = function(client, scope, audience, context, cb) {
   cb(null, access_token);
 };
 ~~~~
-2. Review and modify the config files in the config folder. Remove the ".example" extension
-
-To get your public key go to:
-https://[your-domain].auth0.com/.well-known/jwks.json
-
-3. Review and remove the ".example" extension from the sqlite database
-
-4. Create csv files such as in the csv folder with the appropriate users, connection IDs (random 20 char alphanumeric), and contracts. Review the example sqlite database if in doubt about how the data is structured and constrained. Some constraints, for example on data format are only enforced through the python management app on import.
-
-5. Generate a permanent token for your management app
-
-python management_token.py
-
-Paste the result into the variable AUTH0_MANAGEMENT_TOKEN in config/udp_management_config.py
-
-# How to use it
-## Start up the API 
-This will default to http://localhost:8080/energiesprong/user/0.0.3/ui/
-
-python app.py
-
-## Run the management script
-This one will let up load csv files, create users, etc. Look at the code for options.
-
-python management_app.py
-
-## Run the client app for login and to get PDB tokens
-This client allows you to either login and create a token for the UDB to see all PDBs (what a client would do for the user) and related data. The PDB field on the home page however allows you to specify the token is for one specific PDB and will limit results to only PDBs that have the exact URL filled in. So if you PDB url in the database is "https://www.stroomversnelling/pdb-example" then you must use this value exactly to generate a valid token. The token works by adding a custom scope using the rule above, which will limit the data provided via the API.
-
-python authorization_client.py

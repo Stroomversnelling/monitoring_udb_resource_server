@@ -1,18 +1,30 @@
 # UDB Resource Server and Client
 This repository provides tools to test a User Database Resources Server for Energy Performance Monitoring.
 
+## Purpose of this repo
+The purpose of this repo is to test, allow the implementation of, further develop and document the Energy Performance Monitoring API developed by Stroomversnelling, Enermatics, Lens, Fifthplay, Swycs and Enervalis. 
+
+This API is developed as part of the monitoring norm (https://monitoringnorm.nl/) for net-zero energy housing (nul-op-de-meter), initially for The Netherlands, but also for other parts of Europe and North America. Monitoring energy performance is an essential requirement for being able to guarantee said energy performance and therefore the financing of the investment necessary to achieve net-zero energy.
+
+## What is in this repo
+There are several components of this repo:
+
+1. The UDB Resource Server and Client. This is an example authentication resource server and client designed to work fluently with https://github.com/Stroomversnelling/monitoring_api and https://github.com/Stroomversnelling/monitoring_api_udb. 
+2. Issues. This is to report bugs and request features while working with the UDB Resource Server and Client.
+3. Wiki. This is to document the working of the UDB Resource Server and Client.  
+
 ## Installation
 1. Create an Auth0 account (free) to be create an dashboard where you can add the UDB API, the management app, and the client app. 
 
 For the api choose an identifier such as "https://stroomversnelling.nl/user/test" and give it a name. Set the signing algorithm to RS256.
 
-The apps require secret keys and some minimal configuration. You should create a web app for the client or native app (both will support authorization code flow). You should create a M2M app for the management app with access to the Auth0 management API. 
+The apps require secret keys and some minimal configuration. You should create a web app for the client or native app (both will support authorization code flow). You should create a machine-to-machine app for the management app with access to the Auth0 management API. 
 
 For the client:
 Add redirect URIs / callback path to the default https://localhost:3000/ or adapt as required.
 Add custom logout paths: https://localhost:3000/
 
-In the Auth0 dashboard (https://manage.auth0.com/): Add a custom rules and hooks to enable the creation of the PDB tokens dynamically with custom claims in the JWT format bearer token.
+In the Auth0 dashboard (https://manage.auth0.com/): Add custom rules and hooks to enable the creation of the PDB tokens dynamically with custom claims in the JWT format bearer token.
 
 Add the following rule for the client to work:
 ~~~~
@@ -42,7 +54,7 @@ https://[your-domain].auth0.com/.well-known/jwks.json
 
 3. Review and remove the ".example" extension from the sqlite database
 
-4. Create csv files such as in the csv folder with the appropriate users, connection IDs (random 20 char alphanumeric), and contracts. Review the example sqlite database if in doubt about how the data is structured and constrained. Some constraints, for example on data format are only enforced through the python management app on import.
+4. Create csv files such as in the csv folder with the appropriate users, connection IDs (random 20 char alphanumeric), and contracts. Review the example sqlite database if in doubt about how the data is structured and constrained. Some constraints, for example on data format, are only enforced through the python management app on import.
 
 5. Generate a permanent token for your management app
 
@@ -57,17 +69,17 @@ This will default to http://localhost:8080/energiesprong/user/0.0.3/ui/
 python app.py
 
 ## Run the management script
-This one will let up load csv files, create users, etc. Look at the code for options.
+This will let you load csv files, create users, etc. Look at the code for options.
 
 python management_app.py
 
 ## Run the client app for login and to get PDB tokens
-This client allows you to either login and create a token for the UDB to see all PDBs (what a client would do for the user) and related data. The PDB field on the home page however allows you to specify the token is for one specific PDB and will limit results to only PDBs that have the exact URL filled in. So if you PDB url in the database is "https://www.stroomversnelling/pdb-example" then you must use this value exactly to generate a valid token. The token works by adding a custom scope using the rule above, which will limit the data provided via the API.
+This client allows you to either login and create a token for the UDB to see all PDBs (what a client would do for the user) and related data. The PDB field on the home page however allows you to specify the token is for one specific PDB and will limit results to only PDBs that have the exact URL filled in. So if your PDB url in the database is "https://www.stroomversnelling/pdb-example" then you must use this value exactly to generate a valid token. The token works by adding a custom scope using the rule above, which will limit the data provided via the API.
 
 python authorization_client.py
 
-# For advanced cases (use at own risk - untested)
-The management app will work with the Auth0 Management API. However, if you want the M2M flow to work for the UDB API (you have to implement this or use curl), then you will need to add a hook that does the same as the rule (this is untested):
+## For advanced cases (use at own risk - untested)
+The management app will work with the Auth0 Management API. However, if you want the machine-to-machine flow to work for the UDB API (you'll have to use either this or curl), you will need to add a hook that does the same as the rule, such as (this is untested):
 ~~~~
 /**
 @param {object} client - information about the client

@@ -8,7 +8,7 @@ Click==7.0
 clickclick==1.2.2
 colorama==0.4.1
 connexion==2.2.0
-cryptography==2.5
+cryptography==3.2
 ecdsa==0.13
 Flask==1.0.2
 future==0.17.1

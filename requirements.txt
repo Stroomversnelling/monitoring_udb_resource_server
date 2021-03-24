@@ -33,7 +33,7 @@ python-jose==3.0.1
 pytz==2018.9
 PyYAML==3.13
 requests==2.21.0
-rsa==4.0
+rsa==4.1
 six==1.12.0
 SQLAlchemy==1.2.17
 swagger-ui-bundle==0.0.3
